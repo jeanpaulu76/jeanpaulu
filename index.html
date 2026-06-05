@@ -459,10 +459,38 @@ function submitForm(){
   var ph=document.getElementById('phone').value.trim();
   if(!fn||!ln||!em||!ph){alert(lang==='en'?'Please fill in all required fields.':'Por favor completa todos los campos requeridos.');return;}
   var interests=[];document.querySelectorAll('.checkbox-item input:checked').forEach(function(cb){interests.push(cb.value);});
-  var subj=encodeURIComponent('Coaching Inquiry from '+fn+' '+ln);
-  var body=encodeURIComponent('Name: '+fn+' '+ln+'\nCompany: '+(document.getElementById('company').value||'N/A')+'\nEmail: '+em+'\nPhone: '+ph+'\nExperience: '+(document.getElementById('experience').value||'N/A')+'\nInterested in: '+(interests.join(', ')||'N/A')+'\nMessage: '+(document.getElementById('message').value||'N/A'));
-  window.location.href='mailto:jp@thetrigon.com?subject='+subj+'&body='+body;
-  document.getElementById('formSuccess').style.display='block';
+  var btn=document.querySelector('button[onclick="submitForm()"]');
+  btn.disabled=true;btn.textContent='Sending...';
+  var formData=new FormData();
+  formData.append('name',fn+' '+ln);
+  formData.append('company',document.getElementById('company').value||'N/A');
+  formData.append('email',em);
+  formData.append('phone',ph);
+  formData.append('experience',document.getElementById('experience').value||'N/A');
+  formData.append('interests',interests.join(', ')||'N/A');
+  formData.append('message',document.getElementById('message').value||'N/A');
+  formData.append('_subject','Coaching Inquiry from '+fn+' '+ln);
+  fetch('https://formspree.io/f/xeewoljr',{method:'POST',body:formData,headers:{Accept:'application/json'}})
+    .then(function(r){
+      if(r.ok){
+        document.getElementById('formSuccess').style.display='block';
+        document.getElementById('firstName').value='';
+        document.getElementById('lastName').value='';
+        document.getElementById('company').value='';
+        document.getElementById('email').value='';
+        document.getElementById('phone').value='';
+        document.getElementById('message').value='';
+        document.querySelectorAll('.checkbox-item input').forEach(function(cb){cb.checked=false;});
+        btn.textContent='REQUEST INFO →';btn.disabled=false;
+      } else {
+        alert('Something went wrong. Please call 786-369-6335 or email jp@thetrigon.com');
+        btn.textContent='REQUEST INFO →';btn.disabled=false;
+      }
+    })
+    .catch(function(){
+      alert('Something went wrong. Please call 786-369-6335 or email jp@thetrigon.com');
+      btn.textContent='REQUEST INFO →';btn.disabled=false;
+    });
 }
 document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
 </script>
