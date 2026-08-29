@@ -202,6 +202,15 @@ textarea{resize:vertical;min-height:92px}
 <b data-en="Received. Thank you." data-es="Recibido. Gracias.">Received. Thank you.</b>
 <span data-en="Jean Paul will review this personally and reach out at the email you provided. If it is urgent, call 786-369-6335 (mobile) or 786-556-0029 (office)." data-es="Jean Paul revisar&aacute; esto personalmente y se comunicar&aacute; al correo que proporcion&oacute;. Si es urgente, llame al 786-369-6335 (m&oacute;vil) o 786-556-0029 (oficina).">Jean Paul will review this personally and reach out at the email you provided. If it is urgent, call 786-369-6335 (mobile) or 786-556-0029 (office).</span>
 </div>
+<div id="failbox" style="display:none;background:rgba(242,101,34,.1);border:1px solid rgba(242,101,34,.45);border-left:4px solid #f26522;border-radius:6px;padding:1.5rem 1.7rem;margin-top:1.2rem">
+<b style="color:#f26522;display:block;margin-bottom:.6rem;font-size:1rem" data-en="We couldn't send that automatically" data-es="No pudimos enviarlo autom&aacute;ticamente">We couldn't send that automatically</b>
+<p style="color:rgba(255,255,255,.75);font-size:.92rem;line-height:1.7;margin-bottom:1rem" data-en="Your answers are safe on this page. Use the button below to send them by email instead, or call and we'll take it over the phone." data-es="Sus respuestas siguen en esta p&aacute;gina. Use el bot&oacute;n de abajo para enviarlas por correo, o llame y lo tomamos por tel&eacute;fono.">Your answers are safe on this page. Use the button below to send them by email instead, or call and we'll take it over the phone.</p>
+<div style="display:flex;gap:.7rem;flex-wrap:wrap">
+<a id="mailfallback" href="mailto:jp@thetrigon.com" class="btn" style="padding:12px 24px;font-size:.82rem" data-en="Send by Email" data-es="Enviar por Correo">Send by Email</a>
+<a href="tel:7863696335" class="btn-o" style="padding:12px 24px;font-size:.82rem">786-369-6335</a>
+</div>
+<p style="color:rgba(255,255,255,.35);font-size:.72rem;margin-top:1rem;font-family:monospace">Error: <span id="failwhy"></span></p>
+</div>
 </div>
 <footer><div class="wrap">
 <div class="fgrid">
@@ -262,10 +271,39 @@ function sendForm(e){
   fd.append('language',lang==='en'?'English':'Espanol');
   fetch('https://formspree.io/f/xjgdkekk',{method:'POST',body:fd,headers:{Accept:'application/json'}})
    .then(function(r){
-     if(r.ok){f.style.display='none';document.getElementById('okmsg').style.display='block';window.scrollTo({top:180,behavior:'smooth'});}
-     else{alert(lang==='en'?'Something went wrong. Please call 786-369-6335 or email jp@thetrigon.com':'Hubo un problema. Llame al 786-369-6335 o escriba a jp@thetrigon.com');btn.disabled=false;btn.textContent=lang==='en'?'Submit':'Enviar';}
+     return r.json().then(function(data){ return {ok:r.ok, status:r.status, data:data}; })
+                    .catch(function(){ return {ok:r.ok, status:r.status, data:null}; });
    })
-   .catch(function(){alert(lang==='en'?'Connection error. Please call 786-369-6335':'Error de conexion. Llame al 786-369-6335');btn.disabled=false;btn.textContent=lang==='en'?'Submit':'Enviar';});
+   .then(function(res){
+     if(res.ok){
+       f.style.display='none';document.getElementById('okmsg').style.display='block';
+       window.scrollTo({top:180,behavior:'smooth'});
+       return;
+     }
+     var why='';
+     if(res.data && res.data.errors && res.data.errors.length){
+       why = res.data.errors.map(function(e){return e.message||e.code;}).join(' | ');
+     } else if(res.data && res.data.error){ why = res.data.error; }
+     else { why = 'HTTP '+res.status; }
+     console.error('Formspree error:', res.status, res.data);
+     showFallback(why);
+   })
+   .catch(function(err){ console.error(err); showFallback('Network error'); });
   return false;
+}
+function showFallback(why){
+  var btn=document.getElementById('submitBtn');
+  btn.disabled=false; btn.textContent = lang==='en'?'Try Again':'Intentar de Nuevo';
+  var box=document.getElementById('failbox');
+  document.getElementById('failwhy').textContent = why;
+  box.style.display='block';
+  // build mailto with all answers so the lead is never lost
+  var fd=new FormData(document.getElementById('mainForm'));
+  var lines=[];
+  fd.forEach(function(v,k){ if(v) lines.push(k+': '+v); });
+  var subj=encodeURIComponent('Website form - '+(fd.get('first_name')||'')+' '+(fd.get('last_name')||''));
+  var body=encodeURIComponent(lines.join('\n'));
+  document.getElementById('mailfallback').href='mailto:jp@thetrigon.com?subject='+subj+'&body='+body;
+  box.scrollIntoView({behavior:'smooth',block:'center'});
 }
 </script></body></html>
