@@ -60,7 +60,7 @@ footer strong{color:var(--gold);}footer a{color:var(--gold);text-decoration:none
 .pill.g{background:rgba(200,168,75,.13);border-color:rgba(200,168,75,.38);color:var(--gold);}
 .step-b p{font-size:.95rem;color:rgba(255,255,255,.74);line-height:1.82;}
 .step-b .note{font-size:.83rem;color:rgba(255,255,255,.5);font-style:italic;margin-top:.6rem;}
-.price-card{max-width:430px;margin:0 auto;background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(200,168,75,.05));border:1px solid rgba(200,168,75,.35);border-top:4px solid var(--gold);border-radius:12px;padding:2.6rem 2.2rem;text-align:center;}
+.price-card{background:linear-gradient(160deg,rgba(255,255,255,.06),rgba(200,168,75,.05));border:1px solid rgba(200,168,75,.35);border-top:4px solid var(--gold);border-radius:12px;padding:2.6rem 2.2rem;text-align:center;}
 .badge{display:inline-block;background:var(--gold);color:var(--navy);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;padding:5px 15px;border-radius:20px;font-weight:800;margin-bottom:1.2rem;}
 .price{font-family:'Playfair Display',serif;font-size:3.1rem;color:var(--white);font-weight:700;line-height:1;}
 .price small{font-size:1rem;color:rgba(255,255,255,.55);font-family:'Mulish',sans-serif;font-weight:400;}
@@ -74,6 +74,42 @@ footer strong{color:var(--gold);}footer a{color:var(--gold);text-decoration:none
 .ccard h4{color:var(--gold);font-size:.75rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem;}
 .ccard a,.ccard p{color:rgba(255,255,255,.85);font-size:1rem;text-decoration:none;line-height:1.6;}
 .ccard a:hover{color:var(--gold);}
+.shots-wrap{margin-bottom:3rem;padding-bottom:2.6rem;border-bottom:1px solid rgba(255,255,255,.08)}
+.shots{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem}
+.shot{margin:0}
+.shotimg{width:100%;aspect-ratio:16/10;background:linear-gradient(135deg,#0d1c30,#141008);border:1px solid rgba(200,168,75,.22);border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;transition:all .3s;position:relative}
+.shotimg img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.shotimg.missing::after{content:'Screenshot coming soon';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:.78rem;letter-spacing:1px;text-align:center;padding:1rem;background:linear-gradient(135deg,#0d1c30,#141008)}
+.shot:hover .shotimg{border-color:var(--gold);transform:translateY(-4px)}
+.shotnote{margin-top:.25rem;text-align:center;font-size:.76rem;color:rgba(255,255,255,.42);line-height:1.45}
+.shot figcaption{margin-top:.7rem;text-align:center;font-family:'Playfair Display',serif;font-size:.95rem;color:var(--gold)}
+@media(max-width:980px){.shots{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.shots{grid-template-columns:1fr}}
+.shot{cursor:pointer}
+#lb{display:none;position:fixed;inset:0;background:rgba(3,8,16,.94);z-index:2000;align-items:center;justify-content:center;padding:3vh 3vw}
+#lb.open{display:flex}
+#lb img{max-width:100%;max-height:88vh;border-radius:10px;border:1px solid rgba(200,168,75,.35);box-shadow:0 30px 80px rgba(0,0,0,.7)}
+#lbcap{position:absolute;bottom:3vh;left:0;right:0;text-align:center;color:var(--gold);font-family:'Playfair Display',serif;font-size:1.1rem}
+#lbx{position:absolute;top:2.4vh;right:3vw;color:rgba(255,255,255,.7);font-size:2rem;cursor:pointer;line-height:1;background:none;border:none}
+#lbx:hover{color:var(--gold)}
+.extras{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.extra{background:rgba(255,255,255,.04);border:1px solid rgba(200,168,75,.2);border-radius:8px;padding:1.7rem;position:relative;transition:all .3s}
+.extra:hover{border-color:rgba(200,168,75,.55);transform:translateY(-3px)}
+.xnum{width:34px;height:34px;border-radius:50%;background:rgba(200,168,75,.14);border:1px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:.95rem;margin-bottom:.9rem}
+.extra h4{font-family:'Playfair Display',serif;font-size:1.12rem;color:var(--gold);margin-bottom:.6rem}
+.xnote{margin-top:.75rem;padding-top:.7rem;border-top:1px solid rgba(200,168,75,.16);font-size:.78rem!important;color:rgba(200,168,75,.7)!important;font-style:italic}
+.extra p{font-size:.9rem;color:rgba(255,255,255,.7);line-height:1.75}
+@media(max-width:900px){.extras{grid-template-columns:1fr}}
+.ptiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;align-items:start;text-align:left}
+.price-card{position:relative;display:flex;flex-direction:column}
+.price-card .badge,.price-card .pname,.price-card .price,.price-card .price-after{text-align:center;align-self:center}
+.price-card.featured{border-color:var(--gold);border-top-width:4px;box-shadow:0 18px 50px rgba(0,0,0,.45)}
+.ribbon{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;font-weight:800;padding:5px 16px;border-radius:20px;white-space:nowrap}
+.pname{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--white);margin-bottom:.5rem}
+.price-card .plist{flex:1}
+.plist li.sub{padding-left:1.9rem;margin-top:-.35rem}
+.plist li.sub .ck{display:none}
+@media(max-width:980px){.ptiers{grid-template-columns:1fr;max-width:430px;margin:0 auto}}
 @media(max-width:1050px){.nav-links{gap:1rem;}.nav-links a{font-size:.74rem;}}
 @media(max-width:900px){.nav-links{display:none;}.hamburger{display:flex;}.step{grid-template-columns:1fr;gap:.9rem;}}
 </style>
@@ -143,6 +179,54 @@ footer strong{color:var(--gold);}footer a{color:var(--gold);text-decoration:none
     <div class="gline"></div>
     <p style="color:rgba(255,255,255,.68);max-width:680px;margin-bottom:2.5rem;line-height:1.8;" data-en="Use the tools in this order. Each step builds on the one before it, so by the time you make an offer you already know your numbers, your financing, and your exit." data-es="Use las herramientas en este orden. Cada paso se apoya en el anterior, de modo que al hacer una oferta ya conoce sus n&uacute;meros, su financiamiento y su estrategia de salida.">Use the tools in this order. Each step builds on the one before it, so by the time you make an offer you already know your numbers, your financing, and your exit.</p>
 
+    <div class="shots-wrap">
+      <span class="tag" data-en="The Tools" data-es="Las Herramientas">The Tools</span>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.55rem;margin-bottom:.7rem;color:var(--white)" data-en="What You Get Inside <span style="color:var(--gold)">Trigon</span>" data-es="Lo Que Obtiene Dentro de <span style="color:var(--gold)">Trigon</span>">What You Get Inside <span style="color:var(--gold)">Trigon</span></h3>
+      <p style="color:rgba(255,255,255,.62);max-width:640px;margin-bottom:1.8rem;line-height:1.8" data-en="Every tool below is demonstrated live during the workshop on a real property." data-es="Cada herramienta de abajo se demuestra en vivo durante el taller con una propiedad real.">Every tool below is demonstrated live during the workshop on a real property.</p>
+      <div class="shots">
+        <figure class="shot">
+          <div class="shotimg"><img src="tools/value-estimator.png" alt="Value Estimator" loading="lazy" onerror="this.parentNode.classList.add('missing')"></div>
+          <figcaption data-en="Value Estimator" data-es="Estimador de Valor">Value Estimator</figcaption>
+          <p class="shotnote" data-en="Useful for realtors, investors and brokers" data-es="&Uacute;til para realtors, inversionistas y brokers">Useful for realtors, investors and brokers</p>
+        </figure>
+        <figure class="shot">
+          <div class="shotimg"><img src="tools/comp-report.png" alt="Comp Report" loading="lazy" onerror="this.parentNode.classList.add('missing')"></div>
+          <figcaption data-en="Comp Report" data-es="Reporte de Comparables">Comp Report</figcaption>
+          <p class="shotnote" data-en="Useful for realtors, investors and brokers" data-es="&Uacute;til para realtors, inversionistas y brokers">Useful for realtors, investors and brokers</p>
+        </figure>
+        <figure class="shot">
+          <div class="shotimg"><img src="tools/fix-flip.png" alt="Fix &amp; Flip Calculator" loading="lazy" onerror="this.parentNode.classList.add('missing')"></div>
+          <figcaption data-en="Fix &amp; Flip Calculator" data-es="Calculadora Fix &amp; Flip">Fix &amp; Flip Calculator</figcaption>
+          <p class="shotnote" data-en="Useful for realtors, investors and brokers" data-es="&Uacute;til para realtors, inversionistas y brokers">Useful for realtors, investors and brokers</p>
+        </figure>
+        <figure class="shot">
+          <div class="shotimg"><img src="tools/dscr.png" alt="DSCR Calculator" loading="lazy" onerror="this.parentNode.classList.add('missing')"></div>
+          <figcaption data-en="DSCR Calculator" data-es="Calculadora DSCR">DSCR Calculator</figcaption>
+          <p class="shotnote" data-en="Useful for realtors, investors and brokers" data-es="&Uacute;til para realtors, inversionistas y brokers">Useful for realtors, investors and brokers</p>
+        </figure>
+        <figure class="shot">
+          <div class="shotimg"><img src="tools/ask-trigon.png" alt="Ask Trigon AI" loading="lazy" onerror="this.parentNode.classList.add('missing')"></div>
+          <figcaption data-en="Ask Trigon AI" data-es="Pregunte a Trigon IA">Ask Trigon AI</figcaption>
+          <p class="shotnote" data-en="Useful for realtors, investors and brokers" data-es="&Uacute;til para realtors, inversionistas y brokers">Useful for realtors, investors and brokers</p>
+        </figure>
+        <figure class="shot">
+          <div class="shotimg"><img src="tools/nork-crm.png" alt="Nork Central CRM" loading="lazy" onerror="this.parentNode.classList.add('missing')"></div>
+          <figcaption data-en="Nork Central CRM" data-es="Nork Central CRM">Nork Central CRM</figcaption>
+          <p class="shotnote" data-en="Useful for realtors, investors and brokers" data-es="&Uacute;til para realtors, inversionistas y brokers">Useful for realtors, investors and brokers</p>
+        </figure>
+        <figure class="shot">
+          <div class="shotimg"><img src="tools/scope-of-work.png" alt="Scope of Work" loading="lazy" onerror="this.parentNode.classList.add('missing')"></div>
+          <figcaption data-en="Scope of Work" data-es="Alcance de Obra">Scope of Work</figcaption>
+          <p class="shotnote" data-en="Useful for realtors, investors and brokers" data-es="&Uacute;til para realtors, inversionistas y brokers">Useful for realtors, investors and brokers</p>
+        </figure>
+        <figure class="shot">
+          <div class="shotimg"><img src="tools/task-reminder.png" alt="Nork Task Reminder" loading="lazy" onerror="this.parentNode.classList.add('missing')"></div>
+          <figcaption data-en="Nork Task Reminder" data-es="Recordatorio de Tareas Nork">Nork Task Reminder</figcaption>
+          <p class="shotnote" data-en="Useful for realtors, investors and brokers" data-es="&Uacute;til para realtors, inversionistas y brokers">Useful for realtors, investors and brokers</p>
+        </figure>
+      </div>
+    </div>
+
     <div class="step"><div class="num">1</div><div class="step-b">
       <span class="pill g">Nork Group</span>
       <h3 data-en="Find the Property" data-es="Encuentre la Propiedad">Find the Property</h3>
@@ -165,9 +249,14 @@ footer strong{color:var(--gold);}footer a{color:var(--gold);text-decoration:none
 
     <div class="step"><div class="num">4</div><div class="step-b">
       <span class="pill" data-en="Trigon Tool" data-es="Herramienta Trigon">Trigon Tool</span>
-      <h3 data-en="Fix &amp; Flip Calculator" data-es="Calculadora Fix &amp; Flip">Fix &amp; Flip Calculator</h3>
+      <h3 data-en="Fix &amp; Flip Calculator &amp; DSCR Calculator" data-es="Calculadora Fix &amp; Flip y Calculadora DSCR">Fix &amp; Flip Calculator &amp; DSCR Calculator</h3>
       <p data-en="Now find out if the property is actually worth buying. Enter your purchase price, rehab budget, holding costs, and ARV to see your projected return on investment. The calculator also shows whether the deal fits hard money lending parameters &mdash; and if it does, you can request a pre-approval through Nork Capital Lending." data-es="Ahora descubra si la propiedad realmente vale la pena. Ingrese su precio de compra, presupuesto de remodelaci&oacute;n, costos de mantenimiento y ARV para ver su retorno de inversi&oacute;n proyectado. La calculadora tambi&eacute;n muestra si el negocio cumple con los par&aacute;metros de un pr&eacute;stamo hard money &mdash; y de ser as&iacute;, puede solicitar una preaprobaci&oacute;n a trav&eacute;s de Nork Capital Lending.">Now find out if the property is actually worth buying. Enter your purchase price, rehab budget, holding costs, and ARV to see your projected return on investment. The calculator also shows whether the deal fits hard money lending parameters &mdash; and if it does, you can request a pre-approval through Nork Capital Lending.</p>
       <p class="note" data-en="Projections are estimates and depend entirely on the accuracy of the numbers you enter." data-es="Las proyecciones son estimaciones y dependen totalmente de la exactitud de los n&uacute;meros que ingrese.">Projections are estimates and depend entirely on the accuracy of the numbers you enter.</p>
+      <div style="margin-top:1.3rem;padding-top:1.1rem;border-top:1px solid rgba(200,168,75,.18)">
+      <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--white);margin-bottom:.5rem" data-en="DSCR Calculator &mdash; for rentals" data-es="Calculadora DSCR &mdash; para rentas">DSCR Calculator &mdash; for rentals</h4>
+      <p data-en="Holding the property instead of flipping it? DSCR is monthly rent divided by monthly principal, interest, taxes, insurance and association dues (PITIA). A ratio of 1.0 means rent exactly covers those costs. Above 1.0 leaves a surplus; below 1.0 leaves a shortfall you cover out of pocket." data-es="&iquest;Va a rentar la propiedad en lugar de venderla? El DSCR es la renta mensual dividida entre el pago mensual de capital, inter&eacute;s, impuestos, seguro y cuotas de asociaci&oacute;n (PITIA). Un &iacute;ndice de 1.0 significa que la renta cubre exactamente esos costos. Arriba de 1.0 deja un excedente; abajo de 1.0 deja un faltante que usted cubre de su bolsillo.">Holding the property instead of flipping it? DSCR is monthly rent divided by monthly principal, interest, taxes, insurance and association dues (PITIA). A ratio of 1.0 means rent exactly covers those costs. Above 1.0 leaves a surplus; below 1.0 leaves a shortfall you cover out of pocket.</p>
+      <p class="note" data-en="Estimate only. Lenders evaluate rents and expenses differently, and this is not a loan approval or commitment to lend. Verify actual rent, costs, value and financing terms for the property." data-es="Solo una estimaci&oacute;n. Los prestamistas eval&uacute;an rentas y gastos de manera distinta, y esto no es una aprobaci&oacute;n ni un compromiso de pr&eacute;stamo. Verifique la renta, los costos, el valor y los t&eacute;rminos de financiamiento reales de la propiedad.">Estimate only. Lenders evaluate rents and expenses differently, and this is not a loan approval or commitment to lend. Verify actual rent, costs, value and financing terms for the property.</p>
+      </div>
     </div></div>
 
     <div class="step"><div class="num">5</div><div class="step-b">
@@ -182,28 +271,102 @@ footer strong{color:var(--gold);}footer a{color:var(--gold);text-decoration:none
       <h3 data-en="Offer, Escrow &amp; Closing" data-es="Oferta, Dep&oacute;sito en Garant&iacute;a y Cierre">Offer, Escrow &amp; Closing</h3>
       <p data-en="Once the seller accepts your offer, we order the contract and place your deposit with the title escrow company. Financing runs through Nork Capital Lending and our associate lenders. From that point until closing, you'll have a dedicated WhatsApp line open with our financing team so you always know where your deal stands." data-es="Una vez que el vendedor acepta su oferta, ordenamos el contrato y colocamos su dep&oacute;sito con la compa&ntilde;&iacute;a de t&iacute;tulo en garant&iacute;a. El financiamiento se gestiona a trav&eacute;s de Nork Capital Lending y nuestros prestamistas asociados. Desde ese momento hasta el cierre, tendr&aacute; una l&iacute;nea de WhatsApp dedicada con nuestro equipo de financiamiento para que siempre sepa en qu&eacute; estado est&aacute; su negocio.">Once the seller accepts your offer, we order the contract and place your deposit with the title escrow company. Financing runs through Nork Capital Lending and our associate lenders. From that point until closing, you'll have a dedicated WhatsApp line open with our financing team so you always know where your deal stands.</p>
     </div></div>
+
+    <!-- EXTRA TOOLS -->
+    <div style="margin-top:3.2rem;padding-top:2.4rem;border-top:2px solid rgba(200,168,75,.25)">
+      <span class="tag" data-en="Also Included" data-es="Tambi&eacute;n Incluido">Also Included</span>
+      <h2 class="title" style="font-size:1.8rem" data-en="Extra Tools from <span>Trigon Services</span>" data-es="Herramientas Extra de <span>Trigon Services</span>">Extra Tools from <span>Trigon Services</span></h2>
+      <div class="gline"></div>
+      <div class="extras">
+
+        <div class="extra">
+          <div class="xnum">1</div>
+          <h4 data-en="Nork Central CRM" data-es="Nork Central CRM">Nork Central CRM</h4>
+          <p data-en="Built for realtors, investors and brokers. A CRM keeps every client record, conversation and transaction history in one place, so nothing falls through the cracks and you always know where each relationship stands." data-es="Creado para realtors, inversionistas y brokers. Un CRM mantiene cada registro de cliente, conversaci&oacute;n e historial de transacciones en un solo lugar, para que nada se le escape y siempre sepa en qu&eacute; punto est&aacute; cada relaci&oacute;n.">Built for realtors, investors and brokers. A CRM keeps every client record, conversation and transaction history in one place, so nothing falls through the cracks and you always know where each relationship stands.</p>
+          <p class="xnote" data-en="Useful for realtors, investors and brokers" data-es="&Uacute;til para realtors, inversionistas y brokers">Useful for realtors, investors and brokers</p>
+        </div>
+
+        <div class="extra">
+          <div class="xnum">2</div>
+          <h4 data-en="Scope of Work" data-es="Alcance de Obra">Scope of Work</h4>
+          <p data-en="Turn your renovation plans into a line-item budget. Organize the work room by room, export your scope, then take it straight into a financing conversation with Nork Capital Lending." data-es="Convierta su plan de remodelaci&oacute;n en un presupuesto detallado por partidas. Organice el trabajo cuarto por cuarto, exporte su alcance de obra, y ll&eacute;velo directo a una conversaci&oacute;n de financiamiento con Nork Capital Lending.">Turn your renovation plans into a line-item budget. Organize the work room by room, export your scope, then take it straight into a financing conversation with Nork Capital Lending.</p>
+          <p class="xnote" data-en="Useful for realtors, investors and brokers" data-es="&Uacute;til para realtors, inversionistas y brokers">Useful for realtors, investors and brokers</p>
+        </div>
+
+        <div class="extra">
+          <div class="xnum">3</div>
+          <h4 data-en="Nork Task Reminder" data-es="Recordatorio de Tareas Nork">Nork Task Reminder</h4>
+          <p data-en="Deadlines are where deals get lost. Task Reminder prompts you on inspection windows, deposit dates, closing dates and follow-ups, so the important ones never slip past you." data-es="Las fechas l&iacute;mite son donde se pierden los negocios. El Recordatorio de Tareas le avisa de los per&iacute;odos de inspecci&oacute;n, fechas de dep&oacute;sito, fechas de cierre y seguimientos, para que los importantes nunca se le pasen.">Deadlines are where deals get lost. Task Reminder prompts you on inspection windows, deposit dates, closing dates and follow-ups, so the important ones never slip past you.</p>
+          <p class="xnote" data-en="Useful for realtors, investors and brokers" data-es="&Uacute;til para realtors, inversionistas y brokers">Useful for realtors, investors and brokers</p>
+        </div>
+
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="pricing" style="padding:70px 5%;">
   <div class="section-inner" style="text-align:center;">
     <span class="tag" data-en="Pricing" data-es="Precios">Pricing</span>
-    <h2 class="title" data-en="Try It <span>Free</span> for 30 Days" data-es="Pru&eacute;belo <span>Gratis</span> por 30 D&iacute;as">Try It <span>Free</span> for 30 Days</h2>
-    <div class="gline" style="margin:0 auto 2.4rem;"></div>
-    <div class="price-card">
-      <span class="badge" data-en="30 Days Free" data-es="30 D&iacute;as Gratis">30 Days Free</span>
-      <div class="price">$19<small>.99</small></div>
-      <p class="price-after" data-en="per month after your free trial ends" data-es="por mes al terminar su prueba gratuita">per month after your free trial ends</p>
-      <ul class="plist">
-        <li><span class="ck">&#10003;</span> <span data-en="Value Estimator" data-es="Estimador de Valor">Value Estimator</span></li>
-        <li><span class="ck">&#10003;</span> <span data-en="Comp Report" data-es="Reporte de Comparables">Comp Report</span></li>
-        <li><span class="ck">&#10003;</span> <span data-en="Fix &amp; Flip Calculator" data-es="Calculadora Fix &amp; Flip">Fix &amp; Flip Calculator</span></li>
-        <li><span class="ck">&#10003;</span> <span data-en="Ask Trigon AI assistant" data-es="Asistente de IA Pregunte a Trigon">Ask Trigon AI assistant</span></li>
-        <li><span class="ck">&#10003;</span> <span data-en="Hard money pre-approval requests" data-es="Solicitudes de preaprobaci&oacute;n hard money">Hard money pre-approval requests</span></li>
-        <li><span class="ck">&#10003;</span> <span data-en="Direct line to Nork Group agents" data-es="L&iacute;nea directa con agentes de Nork Group">Direct line to Nork Group agents</span></li>
-      </ul>
-      <a href="#contact" class="btn" style="width:100%;" data-en="Get Started Free" data-es="Comenzar Gratis">Get Started Free</a>
+    <h2 class="title" data-en="Every Plan Starts <span>Free</span> for 30 Days" data-es="Todos los Planes Empiezan <span>Gratis</span> por 30 D&iacute;as">Every Plan Starts <span>Free</span> for 30 Days</h2>
+    <div class="gline" style="margin:0 auto 1.4rem;"></div>
+    <p style="color:rgba(255,255,255,.66);max-width:600px;margin:0 auto 2.6rem;line-height:1.8" data-en="Pick the plan that matches how you work. Cancel any time during the trial and you are not charged." data-es="Elija el plan que se ajuste a c&oacute;mo trabaja. Cancele en cualquier momento durante la prueba y no se le cobra.">Pick the plan that matches how you work. Cancel any time during the trial and you are not charged.</p>
+    <div class="ptiers">
+      <div class="price-card">
+        <span class="badge" data-en="30 Days Free" data-es="30 D&iacute;as Gratis">30 Days Free</span>
+        <div class="pname" data-en="Starter" data-es="Inicial">Starter</div>
+        <div class="price">$19<small>.99</small></div>
+        <p class="price-after" data-en="per month after your free trial" data-es="por mes al terminar la prueba">per month after your free trial</p>
+        <ul class="plist">
+          <li><span class="ck">&#10003;</span> <span data-en="Value Estimator" data-es="Estimador de Valor">Value Estimator</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Comp Report" data-es="Reporte de Comparables">Comp Report</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Fix &amp; Flip Calculator" data-es="Calculadora Fix &amp; Flip">Fix &amp; Flip Calculator</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="DSCR Calculator" data-es="Calculadora DSCR">DSCR Calculator</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Hard money pre-approval requests" data-es="Solicitudes de preaprobaci&oacute;n hard money">Hard money pre-approval requests</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Direct line to Nork Group agents" data-es="L&iacute;nea directa con agentes de Nork Group">Direct line to Nork Group agents</span></li>
+        </ul>
+        <a href="index.html#contact" class="btn" style="width:100%" data-en="Get Started Free" data-es="Comenzar Gratis">Get Started Free</a>
+      </div>
+      <div class="price-card featured">
+        <span class="ribbon" data-en="Most Popular" data-es="M&aacute;s Popular">Most Popular</span>
+        <span class="badge" data-en="30 Days Free" data-es="30 D&iacute;as Gratis">30 Days Free</span>
+        <div class="pname" data-en="Investor" data-es="Inversionista">Investor</div>
+        <div class="price">$29<small>.99</small></div>
+        <p class="price-after" data-en="per month after your free trial" data-es="por mes al terminar la prueba">per month after your free trial</p>
+        <ul class="plist">
+          <li><span class="ck">&#10003;</span> <span data-en="Value Estimator" data-es="Estimador de Valor">Value Estimator</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Comp Report" data-es="Reporte de Comparables">Comp Report</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Fix &amp; Flip Calculator" data-es="Calculadora Fix &amp; Flip">Fix &amp; Flip Calculator</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="DSCR Calculator" data-es="Calculadora DSCR">DSCR Calculator</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Ask Trigon AI assistant" data-es="Asistente de IA Pregunte a Trigon">Ask Trigon AI assistant</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Scope of Work" data-es="Alcance de Obra">Scope of Work</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Hard money pre-approval requests" data-es="Solicitudes de preaprobaci&oacute;n hard money">Hard money pre-approval requests</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Direct line to Nork Group agents" data-es="L&iacute;nea directa con agentes de Nork Group">Direct line to Nork Group agents</span></li>
+        </ul>
+        <a href="index.html#contact" class="btn" style="width:100%" data-en="Get Started Free" data-es="Comenzar Gratis">Get Started Free</a>
+      </div>
+      <div class="price-card">
+        <span class="badge" data-en="30 Days Free" data-es="30 D&iacute;as Gratis">30 Days Free</span>
+        <div class="pname" data-en="Professional" data-es="Profesional">Professional</div>
+        <div class="price">$89<small>.99</small></div>
+        <p class="price-after" data-en="per month after your free trial" data-es="por mes al terminar la prueba">per month after your free trial</p>
+        <ul class="plist">
+          <li><span class="ck">&#10003;</span> <span data-en="Value Estimator" data-es="Estimador de Valor">Value Estimator</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Comp Report" data-es="Reporte de Comparables">Comp Report</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Fix &amp; Flip Calculator" data-es="Calculadora Fix &amp; Flip">Fix &amp; Flip Calculator</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="DSCR Calculator" data-es="Calculadora DSCR">DSCR Calculator</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Ask Trigon AI assistant" data-es="Asistente de IA Pregunte a Trigon">Ask Trigon AI assistant</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Scope of Work" data-es="Alcance de Obra">Scope of Work</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Hard money pre-approval requests" data-es="Solicitudes de preaprobaci&oacute;n hard money">Hard money pre-approval requests</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Talk to Nork Capital Lending" data-es="Hable con Nork Capital Lending">Talk to Nork Capital Lending</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Direct line to Nork Group agents" data-es="L&iacute;nea directa con agentes de Nork Group">Direct line to Nork Group agents</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Nork Central CRM" data-es="Nork Central CRM">Nork Central CRM</span></li>
+          <li><span class="ck">&#10003;</span> <span data-en="Nork Task Reminder" data-es="Recordatorio de Tareas Nork">Nork Task Reminder</span></li>
+        </ul>
+        <a href="index.html#contact" class="btn" style="width:100%" data-en="Get Started Free" data-es="Comenzar Gratis">Get Started Free</a>
+      </div>
     </div>
+    <p style="color:rgba(255,255,255,.42);font-size:.82rem;margin-top:2rem;max-width:620px;margin-left:auto;margin-right:auto;line-height:1.7" data-en="All tools produce estimates only. Pre-approval requests are subject to underwriting and lender approval and are not a commitment to lend." data-es="Todas las herramientas generan &uacute;nicamente estimaciones. Las solicitudes de preaprobaci&oacute;n est&aacute;n sujetas a evaluaci&oacute;n y aprobaci&oacute;n del prestamista y no constituyen un compromiso de pr&eacute;stamo.">All tools produce estimates only. Pre-approval requests are subject to underwriting and lender approval and are not a commitment to lend.</p>
   </div>
 </section>
 
@@ -245,6 +408,29 @@ function toggleLang(){
   });
 }
 function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+</script>
+<div id="lb" onclick="closeLb(event)">
+  <button id="lbx" onclick="closeLb(event)" aria-label="Close">&times;</button>
+  <img id="lbimg" src="" alt="">
+  <div id="lbcap"></div>
+</div>
+<script>
+document.querySelectorAll('.shot').forEach(function(s){
+  s.addEventListener('click',function(){
+    var img=s.querySelector('img'), cap=s.querySelector('figcaption');
+    if(s.querySelector('.shotimg').classList.contains('missing'))return;
+    document.getElementById('lbimg').src=img.src;
+    document.getElementById('lbcap').textContent=cap.textContent;
+    document.getElementById('lb').classList.add('open');
+    document.body.style.overflow='hidden';
+  });
+});
+function closeLb(e){
+  if(e.target.id==='lbimg')return;
+  document.getElementById('lb').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb({target:{}});});
 </script>
 </body>
 </html>
