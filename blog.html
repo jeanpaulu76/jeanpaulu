@@ -11,12 +11,14 @@
 *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
 body{font-family:'Mulish',sans-serif;background:var(--navy);color:var(--white);overflow-x:hidden;}
 nav{position:fixed;top:0;left:0;width:100%;z-index:999;background:rgba(10,22,40,0.97);backdrop-filter:blur(10px);border-bottom:1px solid rgba(200,168,75,0.3);padding:0 5%;}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;height:70px;}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;max-width:1200px;margin:0 auto;height:70px;}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .nav-logo span{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--gold);letter-spacing:1px;}
 .nav-links{display:flex;gap:1.6rem;list-style:none;}
 .nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.8rem;font-weight:500;letter-spacing:0.5px;text-transform:uppercase;transition:color 0.3s;}
 .nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.lang-btn{background:transparent;border:1px solid var(--gold);color:var(--gold);padding:6px 15px;border-radius:4px;font-size:.78rem;cursor:pointer;font-family:'Mulish',sans-serif;letter-spacing:1px;transition:all .3s;flex-shrink:0;margin-left:auto}
+.lang-btn:hover{background:var(--gold);color:var(--navy)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px;background:none;border:none;}
 .hamburger span{display:block;width:24px;height:2px;background:var(--gold);}
 .mobile-menu{display:none;position:fixed;top:70px;left:0;right:0;background:var(--navy2);border-bottom:1px solid rgba(200,168,75,0.2);padding:1.5rem 5%;z-index:998;flex-direction:column;gap:1rem;}
@@ -75,34 +77,35 @@ footer a{color:var(--gold);text-decoration:none;}
       <span>Jean Paul Urquizo</span>
     </a>
     <ul class="nav-links">
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#services">Services</a></li>
-      <li><a href="index.html#coaching">Coaching</a></li>
-      <li><a href="workshop.html">Workshop</a></li><li><a href="workshop2.html" data-en="Workshop 02" data-es="Taller 02">Workshop 02</a></li>
-      <li><a href="testimonials.html">Testimonials</a></li>
+      <li><a href="index.html#about" data-en="About" data-es="Sobre M&iacute;">About</a></li>
+      <li><a href="index.html#services" data-en="Services" data-es="Servicios">Services</a></li>
+      <li><a href="index.html#coaching" data-en="Coaching" data-es="Coaching">Coaching</a></li>
+      <li><a href="workshop.html" data-en="Workshop" data-es="Taller">Workshop</a></li><li><a href="workshop2.html" data-en="Workshop 02" data-es="Taller 02">Workshop 02</a></li>
+      <li><a href="testimonials.html" data-en="Testimonials" data-es="Testimonios">Testimonials</a></li>
       <li><a href="trigon.html">Trigon</a></li>
       <li><a href="blog.html" class="active">Blog</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
+      <li><a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
     </ul>
+    <button class="lang-btn" onclick="toggleLang()" id="langBtn">ES</button>
     <button class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html#about" onclick="toggleMenu()">About</a>
-  <a href="index.html#services" onclick="toggleMenu()">Services</a>
-  <a href="index.html#coaching" onclick="toggleMenu()">Coaching</a>
-  <a href="workshop.html" onclick="toggleMenu()">Workshop</a>
+  <a href="index.html#about" onclick="toggleMenu()" data-en="About" data-es="Sobre M&iacute;">About</a>
+  <a href="index.html#services" onclick="toggleMenu()" data-en="Services" data-es="Servicios">Services</a>
+  <a href="index.html#coaching" onclick="toggleMenu()" data-en="Coaching" data-es="Coaching">Coaching</a>
+  <a href="workshop.html" onclick="toggleMenu()" data-en="Workshop" data-es="Taller">Workshop</a>
 <a href="workshop2.html" onclick="toggleMenu()" data-en="Workshop 02" data-es="Taller 02">Workshop 02</a>
-  <a href="testimonials.html" onclick="toggleMenu()">Testimonials</a>
+  <a href="testimonials.html" onclick="toggleMenu()" data-en="Testimonials" data-es="Testimonios">Testimonials</a>
   <a href="trigon.html" onclick="toggleMenu()">Trigon</a>
-  <a href="blog.html" onclick="toggleMenu()">Blog</a>
-  <a href="index.html#contact" onclick="toggleMenu()">Contact</a>
+  <a href="blog.html" onclick="toggleMenu()" data-en="Blog" data-es="Blog">Blog</a>
+  <a href="index.html#contact" onclick="toggleMenu()" data-en="Contact" data-es="Contacto">Contact</a>
 </div>
 
 <div class="page-hero">
   <div style="position:relative;">
-    <span class="section-tag">Knowledge Hub</span>
-    <h1>Blog &amp; <span>Resources</span></h1>
+    <span class="section-tag" data-en="Knowledge Hub" data-es="Centro de Conocimiento">Knowledge Hub</span>
+    <h1 data-en="Blog &amp; <span>Resources</span>" data-es="Blog y <span>Recursos</span>">Blog &amp; <span>Resources</span></h1>
     <p>Articles, insights, and books on real estate investing, financial freedom, and wealth building from Jean Paul Urquizo — 20+ years of knowledge at your fingertips.</p>
   </div>
 </div>
@@ -113,16 +116,16 @@ footer a{color:var(--gold);text-decoration:none;}
     <!-- FEATURED POST -->
     <div class="featured-post">
       <div>
-        <span class="featured-badge">⭐ Featured Article</span>
+        <span class="featured-badge" data-en="⭐ Featured Article" data-es="⭐ Artículo Destacado">⭐ Featured Article</span>
         <h2>The 5 Biggest Mistakes First-Time Real Estate Investors Make — And How to Avoid Them</h2>
         <p>After 20+ years coaching hundreds of investors across Florida, I've seen the same costly mistakes repeated over and over. In this article I break down the top 5 errors that cost new investors thousands — and exactly how to avoid them.</p>
-        <a href="#" class="btn-primary" style="font-size:0.85rem;padding:12px 24px;">Read Full Article →</a>
+        <a href="#" class="btn-primary" style="font-size:0.85rem;padding:12px 24px;" data-en="Read Full Article →" data-es="Leer Artículo Completo →">Read Full Article →</a>
       </div>
       <div class="featured-img">🏡</div>
     </div>
 
     <!-- BLOG GRID -->
-    <span class="section-tag">Latest Articles</span>
+    <span class="section-tag" data-en="Latest Articles" data-es="&Uacute;ltimos Art&iacute;culos">Latest Articles</span>
     <h2 class="section-title">From the <span style="color:var(--gold);">Blog</span></h2>
     <div class="gold-line"></div>
 
@@ -131,60 +134,60 @@ footer a{color:var(--gold);text-decoration:none;}
       <div class="blog-card">
         <div class="blog-thumb" style="background:linear-gradient(135deg,#0a1628,#1a0d00);">🏚️</div>
         <div class="blog-body">
-          <span class="blog-tag">Fix &amp; Flip</span>
-          <h3>How to Find Undervalued Properties Before Anyone Else Does</h3>
+          <span class="blog-tag" data-en="Fix &amp; Flip" data-es="Fix &amp; Flip">Fix &amp; Flip</span>
+          <h3 data-en="How to Find Undervalued Properties Before Anyone Else Does" data-es="C&oacute;mo Encontrar Propiedades Infravaloradas Antes que Nadie">How to Find Undervalued Properties Before Anyone Else Does</h3>
           <p>The secret to profitable flipping isn't renovation — it's acquisition. Learn the exact strategies I use to source off-market deals across Florida at below-market prices.</p>
-          <div class="blog-meta"><span>📅 2025 · 8 min read</span><a href="#" class="read-more">Read More →</a></div>
+          <div class="blog-meta"><span data-en="📅 2025 · 8 min read" data-es="📅 2025 · 8 min de lectura">📅 2025 · 8 min read</span><a href="#" class="read-more" data-en="Read More →" data-es="Leer Más →">Read More →</a></div>
         </div>
       </div>
 
       <div class="blog-card">
         <div class="blog-thumb" style="background:linear-gradient(135deg,#0a1628,#001a0d);">💰</div>
         <div class="blog-body">
-          <span class="blog-tag">Financing</span>
-          <h3>Hard Money vs. Bank Loans: Which Is Right for Your Deal?</h3>
+          <span class="blog-tag" data-en="Financing" data-es="Financiamiento">Financing</span>
+          <h3 data-en="Hard Money vs. Bank Loans: Which Is Right for Your Deal?" data-es="Hard Money vs. Pr&eacute;stamos Bancarios: &iquest;Cu&aacute;l Le Conviene?">Hard Money vs. Bank Loans: Which Is Right for Your Deal?</h3>
           <p>Speed, flexibility, and terms — understanding when to use hard money lending versus traditional bank financing can make or break your investment deal.</p>
-          <div class="blog-meta"><span>📅 2025 · 6 min read</span><a href="#" class="read-more">Read More →</a></div>
+          <div class="blog-meta"><span data-en="📅 2025 · 6 min read" data-es="📅 2025 · 6 min de lectura">📅 2025 · 6 min read</span><a href="#" class="read-more" data-en="Read More →" data-es="Leer Más →">Read More →</a></div>
         </div>
       </div>
 
       <div class="blog-card">
         <div class="blog-thumb" style="background:linear-gradient(135deg,#0a1628,#1a0a00);">📊</div>
         <div class="blog-body">
-          <span class="blog-tag">Financial Freedom</span>
-          <h3>How to Build a $10,000/Month Passive Income Portfolio in Real Estate</h3>
+          <span class="blog-tag" data-en="Financial Freedom" data-es="Libertad Financiera">Financial Freedom</span>
+          <h3 data-en="How to Build a $10,000/Month Passive Income Portfolio in Real Estate" data-es="C&oacute;mo Construir un Portafolio de $10,000 al Mes en Ingresos Pasivos">How to Build a $10,000/Month Passive Income Portfolio in Real Estate</h3>
           <p>A step-by-step roadmap for building a buy-and-hold rental portfolio that generates consistent monthly passive income — starting from zero.</p>
-          <div class="blog-meta"><span>📅 2025 · 10 min read</span><a href="#" class="read-more">Read More →</a></div>
+          <div class="blog-meta"><span data-en="📅 2025 · 10 min read" data-es="📅 2025 · 10 min de lectura">📅 2025 · 10 min read</span><a href="#" class="read-more" data-en="Read More →" data-es="Leer Más →">Read More →</a></div>
         </div>
       </div>
 
       <div class="blog-card">
         <div class="blog-thumb" style="background:linear-gradient(135deg,#0a1628,#000d1a);">🏢</div>
         <div class="blog-body">
-          <span class="blog-tag">Commercial</span>
-          <h3>Why Commercial Real Estate Is the Next Step for Residential Investors</h3>
-          <p>Once you've mastered residential investing, commercial properties offer bigger returns, longer leases, and more stable cash flow. Here's how to make the transition.</p>
-          <div class="blog-meta"><span>📅 2025 · 7 min read</span><a href="#" class="read-more">Read More →</a></div>
+          <span class="blog-tag" data-en="Commercial" data-es="Comercial">Commercial</span>
+          <h3 data-en="Why Commercial Real Estate Is the Next Step for Residential Investors" data-es="Por Qu&eacute; lo Comercial Es el Siguiente Paso para Inversionistas Residenciales">Why Commercial Real Estate Is the Next Step for Residential Investors</h3>
+          <p data-en="Once you've mastered residential investing, commercial properties offer bigger returns, longer leases, and more stable cash flow. Here's how to make the transition." data-es="Una vez que domina la inversi&oacute;n residencial, las propiedades comerciales ofrecen mayores retornos, contratos m&aacute;s largos y flujo de efectivo m&aacute;s estable. As&iacute; se hace la transici&oacute;n.">Once you've mastered residential investing, commercial properties offer bigger returns, longer leases, and more stable cash flow. Here's how to make the transition.</p>
+          <div class="blog-meta"><span data-en="📅 2025 · 7 min read" data-es="📅 2025 · 7 min de lectura">📅 2025 · 7 min read</span><a href="#" class="read-more" data-en="Read More →" data-es="Leer Más →">Read More →</a></div>
         </div>
       </div>
 
       <div class="blog-card">
         <div class="blog-thumb" style="background:linear-gradient(135deg,#0a1628,#1a1500);">🧠</div>
         <div class="blog-body">
-          <span class="blog-tag">Mindset</span>
-          <h3>The Investor Mindset: How to Think Like a Millionaire Real Estate Developer</h3>
-          <p>Success in real estate starts before you ever make an offer. Learn the mental frameworks and habits that separate top investors from those who never close their first deal.</p>
-          <div class="blog-meta"><span>📅 2025 · 5 min read</span><a href="#" class="read-more">Read More →</a></div>
+          <span class="blog-tag" data-en="Mindset" data-es="Mentalidad">Mindset</span>
+          <h3 data-en="The Investor Mindset: How to Think Like a Millionaire Real Estate Developer" data-es="La Mentalidad del Inversionista: C&oacute;mo Pensar Como un Desarrollador Millonario">The Investor Mindset: How to Think Like a Millionaire Real Estate Developer</h3>
+          <p data-en="Success in real estate starts before you ever make an offer. Learn the mental frameworks and habits that separate top investors from those who never close their first deal." data-es="El &eacute;xito en bienes ra&iacute;ces empieza antes de hacer una oferta. Aprenda los marcos mentales y h&aacute;bitos que separan a los mejores inversionistas de los que nunca cierran su primer negocio.">Success in real estate starts before you ever make an offer. Learn the mental frameworks and habits that separate top investors from those who never close their first deal.</p>
+          <div class="blog-meta"><span data-en="📅 2025 · 5 min read" data-es="📅 2025 · 5 min de lectura">📅 2025 · 5 min read</span><a href="#" class="read-more" data-en="Read More →" data-es="Leer Más →">Read More →</a></div>
         </div>
       </div>
 
       <div class="blog-card">
         <div class="blog-thumb" style="background:linear-gradient(135deg,#0a1628,#001a0a);">🏗️</div>
         <div class="blog-body">
-          <span class="blog-tag">New Construction</span>
-          <h3>Ground-Up Construction: A Complete Guide for New Investors</h3>
+          <span class="blog-tag" data-en="New Construction" data-es="Nueva Construcci&oacute;n">New Construction</span>
+          <h3 data-en="Ground-Up Construction: A Complete Guide for New Investors" data-es="Construcci&oacute;n Desde Cero: Gu&iacute;a Completa para Inversionistas Nuevos">Ground-Up Construction: A Complete Guide for New Investors</h3>
           <p>New construction offers the highest margins in real estate — but also the most complexity. This guide walks you through every stage from land acquisition to final sale.</p>
-          <div class="blog-meta"><span>📅 2025 · 12 min read</span><a href="#" class="read-more">Read More →</a></div>
+          <div class="blog-meta"><span data-en="📅 2025 · 12 min read" data-es="📅 2025 · 12 min de lectura">📅 2025 · 12 min read</span><a href="#" class="read-more" data-en="Read More →" data-es="Leer Más →">Read More →</a></div>
         </div>
       </div>
 
@@ -192,7 +195,7 @@ footer a{color:var(--gold);text-decoration:none;}
 
     <!-- BOOKS SECTION -->
     <div style="margin-top:5rem;">
-      <span class="section-tag">Recommended Reading</span>
+      <span class="section-tag" data-en="Recommended Reading" data-es="Lectura Recomendada">Recommended Reading</span>
       <h2 class="section-title">Books &amp; <span style="color:var(--gold);">Resources</span></h2>
       <div class="gold-line"></div>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.3rem;">
@@ -214,12 +217,12 @@ footer a{color:var(--gold);text-decoration:none;}
                 <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(200,168,75,0.2);border-radius:8px;padding:1.5rem;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(200,168,75,0.5)'" onmouseout="this.style.borderColor='rgba(200,168,75,0.2)'">
           <div style="font-size:3.5rem;margin-bottom:1rem;">&#128218;</div>
           <h4 style="font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:0.5rem;font-size:1rem;">AMPLIFII</h4>
-          <p style="font-size:0.82rem;color:rgba(255,255,255,0.6);">Ren&eacute; Rodriguez &mdash; Transform how you communicate and lead. An expert communications and leadership coach applies the principles of neuroscience and behavioral psychology to your leadership and communication techniques, demonstrating the real-world potential of the latest brain and behavior research.</p>
+          <p style="font-size:0.82rem;color:rgba(255,255,255,0.6);" data-en="Ren&eacute; Rodriguez &mdash; Transform how you communicate and lead. An expert communications and leadership coach applies the principles of neuroscience and behavioral psychology to your leadership and communication techniques, demonstrating the real-world potential of the latest brain and behavior research." data-es="Ren&eacute; Rodriguez &mdash; Transforme la forma en que se comunica y lidera. Un experto en comunicaci&oacute;n y liderazgo aplica los principios de la neurociencia y la psicolog&iacute;a del comportamiento a sus t&eacute;cnicas de liderazgo y comunicaci&oacute;n, demostrando el potencial real de las &uacute;ltimas investigaciones sobre el cerebro y la conducta.">Ren&eacute; Rodriguez &mdash; Transform how you communicate and lead. An expert communications and leadership coach applies the principles of neuroscience and behavioral psychology to your leadership and communication techniques, demonstrating the real-world potential of the latest brain and behavior research.</p>
         </div>
 <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(200,168,75,0.2);border-radius:8px;padding:1.5rem;text-align:center;transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(200,168,75,0.5)'" onmouseout="this.style.borderColor='rgba(200,168,75,0.2)'">
           <div style="font-size:3.5rem;margin-bottom:1rem;">📕</div>
-          <h4 style="font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:0.5rem;font-size:1rem;">More Coming Soon</h4>
-          <p style="font-size:0.82rem;color:rgba(255,255,255,0.6);">Jean Paul is working on his own book on real estate investing and financial freedom. Stay tuned!</p>
+          <h4 style="font-family:'Playfair Display',serif;color:var(--gold);margin-bottom:0.5rem;font-size:1rem;" data-en="More Coming Soon" data-es="Pr&oacute;ximamente M&aacute;s">More Coming Soon</h4>
+          <p style="font-size:0.82rem;color:rgba(255,255,255,0.6);" data-en="Jean Paul is working on his own book on real estate investing and financial freedom. Stay tuned!" data-es="Jean Paul est&aacute; trabajando en su propio libro sobre inversi&oacute;n inmobiliaria y libertad financiera. Pendiente!">Jean Paul is working on his own book on real estate investing and financial freedom. Stay tuned!</p>
         </div>
       </div>
     </div>
@@ -227,10 +230,10 @@ footer a{color:var(--gold);text-decoration:none;}
     <!-- NEWSLETTER -->
     <div class="newsletter">
       <h3>📧 Get Weekly Real Estate Tips</h3>
-      <p>Subscribe to Jean Paul's newsletter and get exclusive investing strategies, market insights, and off-market deal alerts delivered to your inbox every week.</p>
+      <p data-en="Subscribe to Jean Paul's newsletter and get exclusive investing strategies, market insights, and off-market deal alerts delivered to your inbox every week." data-es="Suscr&iacute;base al bolet&iacute;n de Jean Paul y reciba estrategias exclusivas de inversi&oacute;n, an&aacute;lisis de mercado y alertas de propiedades fuera del mercado en su correo cada semana.">Subscribe to Jean Paul's newsletter and get exclusive investing strategies, market insights, and off-market deal alerts delivered to your inbox every week.</p>
       <div class="newsletter-form">
-        <input type="email" placeholder="Enter your email address" />
-        <a href="index.html#contact" class="btn-primary" style="padding:12px 24px;white-space:nowrap;">Subscribe Free</a>
+        <input type="email" data-ph-en="Enter your email address" data-ph-es="Ingrese su correo electr&oacute;nico" placeholder="Enter your email address" />
+        <a href="index.html#contact" class="btn-primary" style="padding:12px 24px;white-space:nowrap;" data-en="Subscribe Free" data-es="Suscribirse Gratis">Subscribe Free</a>
       </div>
     </div>
 
@@ -242,6 +245,17 @@ footer a{color:var(--gold);text-decoration:none;}
   <p style="margin-top:0.4rem;">Nork Group LLC · 20200 West Dixie Hwy Suite 902, Aventura FL 33180 · <a href="tel:7863696335">786-369-6335</a> &middot; <a href="tel:7865560029">786-556-0029</a></p>
   <p style="margin-top:0.4rem;font-size:0.75rem;">&copy; 2025 Jean Paul Urquizo | <a href="index.html">jeanpaulu.com</a> · All rights reserved.</p>
 </footer>
-<script>function toggleMenu(){document.getElementById("mobileMenu").classList.toggle("open");}</script>
+<script>
+var lang='en';
+function toggleLang(){
+  lang=lang==='en'?'es':'en';
+  var b=document.getElementById('langBtn'); if(b) b.textContent=lang==='en'?'ES':'EN';
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-en]').forEach(function(el){var v=el.getAttribute('data-'+lang);if(v)el.innerHTML=v;});
+  document.querySelectorAll('[data-ph-en]').forEach(function(el){var v=el.getAttribute('data-ph-'+lang);if(v)el.placeholder=v;});
+  try{localStorage.setItem('jpLang',lang);}catch(e){}
+}
+(function(){try{if(localStorage.getItem('jpLang')==='es')toggleLang();}catch(e){}})();
+function toggleMenu(){document.getElementById("mobileMenu").classList.toggle("open");}</script>
 </body>
 </html>
